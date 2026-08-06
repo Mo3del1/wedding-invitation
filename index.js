@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formRsvp = document.getElementById('form-rsvp');
 
     if (formRsvp) {
-        formRsvp.addEventListener('submit', (e) => {
+        formRsvp.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Get form values
@@ -146,37 +146,80 @@ document.addEventListener('DOMContentLoaded', () => {
             const guests = parseInt(document.getElementById('rsvp-guests').value);
             const message = document.getElementById('rsvp-message').value.trim();
             const timestamp = new Date().toLocaleString('ar-EG');
+            const statusLabel = status === 'attending' ? 'مؤكد الحضور ✅' : 'معتذر ❌';
 
-            // Save to localStorage
+            // Save to localStorage (backup)
             const newResponse = { name, status, guests, message, timestamp };
             let rsvpList = JSON.parse(localStorage.getItem('rsvp_responses')) || [];
             rsvpList.push(newResponse);
             localStorage.setItem('rsvp_responses', JSON.stringify(rsvpList));
 
-            // UI Thank you State Transition in Modal
+            // Show loading state
             const modalContent = document.querySelector('#rsvp-modal .modal-card');
             const originalHTML = modalContent.innerHTML;
-
             modalContent.innerHTML = `
-                <div class="modal-success-state" style="text-align: center; padding: 2rem 1rem;">
-                    <div style="font-size: 4.5rem; margin-bottom: 1.2rem; animation: heartbeat 1.5s ease infinite;">🎉</div>
-                    <h3 style="color: var(--gold-color); font-size: 1.8rem; margin-bottom: 0.8rem; font-weight: 700;">تم تسجيل الحضور بنجاح!</h3>
-                    <p style="color: var(--text-dark); margin-bottom: 2rem; font-size: 1.05rem;">شكراً جزيلاً لتأكيد حضورك الكريم. نسعد جداً برؤيتك ومشاركتنا فرحتنا. ❤️</p>
-                    <button id="btn-done-close" class="btn-primary shimmer-effect" style="width: 100%;"><span>موافق</span></button>
+                <div style="text-align: center; padding: 3rem 1rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; animation: coupleFloat 1s ease-in-out infinite alternate;">⏳</div>
+                    <p style="color: var(--text-muted); font-size: 1rem;">جاري إرسال تأكيدك...</p>
                 </div>
             `;
 
-            // Action to close success state
-            document.getElementById('btn-done-close').addEventListener('click', () => {
-                rsvpModal.classList.remove('open');
-                document.body.style.overflow = '';
-                // Restore form HTML structure for next open
-                setTimeout(() => {
-                    modalContent.innerHTML = originalHTML;
-                    // Reattach event listener to form after restore
-                    window.location.reload(); // Quick way to ensure all event listeners are fresh and clean
-                }, 500);
-            });
+            // Send to Web3Forms API → triggers email to the couple
+            try {
+                const formData = new FormData();
+                formData.append('access_key', 'ba88f688-bc9b-4f55-ae30-7e96763720f0');
+                formData.append('subject', `تأكيد حضور جديد - ${name} - حفل زفاف محمد و رؤى`);
+                formData.append('from_name', 'دعوة زفاف محمد و رؤى');
+                formData.append('الاسم', name);
+                formData.append('حالة الحضور', statusLabel);
+                formData.append('عدد المرافقين', status === 'attending' ? guests : 'لا ينطبق');
+                formData.append('رسالة التهنئة', message || 'لا توجد رسالة');
+                formData.append('وقت التسجيل', timestamp);
+
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // ✅ Success
+                    modalContent.innerHTML = `
+                        <div class="modal-success-state" style="text-align: center; padding: 2rem 1rem;">
+                            <div style="font-size: 4.5rem; margin-bottom: 1.2rem; animation: heartbeat 1.5s ease infinite;">🎉</div>
+                            <h3 style="color: var(--gold-color); font-size: 1.8rem; margin-bottom: 0.8rem; font-weight: 700;">تم تسجيل الحضور بنجاح!</h3>
+                            <p style="color: var(--text-dark); margin-bottom: 2rem; font-size: 1.05rem;">شكراً جزيلاً لتأكيد حضورك الكريم. نسعد جداً برؤيتك ومشاركتنا فرحتنا. ❤️</p>
+                            <button id="btn-done-close" class="btn-primary shimmer-effect" style="width: 100%;"><span>موافق</span></button>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('فشل الإرسال');
+                }
+
+            } catch (err) {
+                // Show error but data is already saved locally
+                modalContent.innerHTML = `
+                    <div style="text-align: center; padding: 2rem 1rem;">
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem;">⚠️</div>
+                        <h3 style="color: var(--gold-color); font-size: 1.5rem; margin-bottom: 0.8rem;">تم الحفظ محلياً</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">تم تسجيل حضورك، لكن تعذر الإرسال الآن. يرجى المحاولة لاحقاً.</p>
+                        <button id="btn-done-close" class="btn-primary" style="width: 100%;"><span>موافق</span></button>
+                    </div>
+                `;
+            }
+
+            // Close button action
+            setTimeout(() => {
+                const closeBtn = document.getElementById('btn-done-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        rsvpModal.classList.remove('open');
+                        document.body.style.overflow = '';
+                        setTimeout(() => { window.location.reload(); }, 500);
+                    });
+                }
+            }, 100);
         });
     }
 

@@ -1,0 +1,1092 @@
+/* ==========================================================================
+   CSS Stylesheet for Mohamed & Roaa Wedding Invitation
+   Style: Luxury • Minimal • Storytelling • Mobile First
+   ========================================================================== */
+
+/* Design Tokens & Theme Variables */
+:root {
+    --bg-color: #FDFBF8;         /* Off-white base */
+    --gold-color: #C9A14A;       /* Luxury gold */
+    --gold-hover: #B88F3A;
+    --rose-color: #F3D8DC;       /* Gentle rose/pink */
+    --green-color: #889C7A;      /* Soft botanical green */
+    --text-dark: #3E3B39;        /* Warm dark grey for high-readability text */
+    --text-muted: #7E7975;
+    --white: #FFFFFF;
+    --shadow-light: 0 4px 20px rgba(201, 161, 74, 0.08);
+    --shadow-medium: 0 8px 30px rgba(201, 161, 74, 0.15);
+    --font-ui: 'Tajawal', sans-serif;
+    --font-calligraphy: 'Tajawal', sans-serif;
+    --font-subtitle: 'Playfair Display', serif;
+    --transition-smooth: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset and Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    font-family: var(--font-ui);
+    line-height: 1.6;
+    overflow-x: hidden;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography elements */
+h1, h2, h3, .couple-names, .card-names {
+    font-family: var(--font-calligraphy);
+    font-weight: 700;
+}
+
+/* Page Control Classes */
+.active-page {
+    display: flex !important;
+    animation: pageFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hidden-page {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Welcome Screen (Page 1)
+   ========================================================================== */
+#welcome-screen {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(253, 251, 248, 0.94), rgba(253, 251, 248, 0.94)), url('rose_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    padding: 2rem 1rem;
+}
+
+.welcome-container {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Floral corners styles */
+.floral-corner {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: floralFloat 6s ease-in-out infinite alternate;
+}
+.floral-corner.top-left {
+    top: 5px;
+    left: 5px;
+}
+.floral-corner.top-right {
+    top: 5px;
+    right: 5px;
+}
+
+/* Heart drawing animation */
+.animated-heart-wrapper {
+    margin-bottom: 1rem;
+}
+
+.heart-svg {
+    width: 70px;
+    height: 70px;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawHeart 2.5s ease-in-out forwards;
+}
+
+/* Couple Illustration Frame: Oval and Hug effect */
+.couple-illustration-container {
+    width: 220px;
+    height: 220px;
+    margin: 1rem auto;
+    position: relative;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 3px double var(--gold-color);
+    padding: 6px;
+    background: linear-gradient(145deg, #fdfbf8, #f0eae1);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.couple-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+/* Couple AI image (Groom & Bride hugging) styling & animation */
+.couple-ai-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    opacity: 0;
+    transform: scale(1.1) translateY(15px);
+    animation: coupleReveal 2.0s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards, coupleFloat 5s ease-in-out infinite alternate 2.6s;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* Names and Typography */
+.welcome-names {
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+.couple-names {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.heart-pulse {
+    display: inline-block;
+    color: #e25555;
+    animation: heartbeat 1.5s infinite;
+}
+
+.wedding-subtitle {
+    font-family: var(--font-subtitle);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-color);
+}
+
+/* Quote */
+.welcome-quote {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+    max-width: 90%;
+}
+
+.quote-text {
+    font-family: var(--font-calligraphy);
+    font-size: 1.4rem;
+    color: var(--gold-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Quote */
+.welcome-quote {
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+    max-width: 90%;
+}
+
+.quote-text {
+    font-family: var(--font-calligraphy);
+    font-size: 1.4rem;
+    color: var(--gold-color);
+    margin-bottom: 0.3rem;
+}
+
+.quote-subtext {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Interactive Buttons styling */
+.btn-primary {
+    position: relative;
+    background: linear-gradient(135deg, var(--gold-color), var(--gold-hover));
+    color: var(--white);
+    border: none;
+    padding: 0.95rem 2.8rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: var(--font-ui);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 161, 74, 0.3);
+    transition: var(--transition-fast);
+    outline: none;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+}
+
+.btn-primary span {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(201, 161, 74, 0.45);
+}
+
+.btn-primary:hover::after {
+    left: 125%;
+    transition: 0.75s ease-in-out;
+}
+
+/* Shimmer Keyframe Animation */
+.shimmer-effect {
+    animation-delay: 1.4s;
+}
+
+/* Down Scroll Arrow hint */
+.scroll-down-hint {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--gold-color);
+    opacity: 0;
+    animation: fadeInUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 1.7s forwards, bounce 2s infinite 2.5s;
+}
+
+/* ==========================================================================
+   Invitation Details Screen (Page 2)
+   ========================================================================== */
+#invitation-screen {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(rgba(253, 251, 248, 0.93), rgba(253, 251, 248, 0.93)), url('rose_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 3rem 1.2rem;
+    overflow-x: hidden;
+}
+
+/* Parallax Decor Background Layers */
+.bg-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+}
+
+.bg-decor.layer-1 {
+    background-image: radial-gradient(var(--rose-color) 1.5px, transparent 1.5px),
+                      radial-gradient(var(--gold-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    animation: parallaxSlow 60s linear infinite;
+}
+
+.bg-decor.layer-2 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23C9A14A' fill-opacity='0.1'%3E%3Cpath d='M14 16 L20 20 L16 14 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    animation: parallaxSlowReverse 80s linear infinite;
+}
+
+.invitation-container {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+/* 1. Custom CSS luxury invitation card structure */
+.invitation-card {
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid rgba(201, 161, 74, 0.3);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    border: 1px solid rgba(201, 161, 74, 0.15);
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.card-inner-border {
+    border: 1px double var(--gold-color);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.card-botanical-header {
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.card-names {
+    font-size: 2.2rem;
+    color: var(--gold-color);
+    margin-bottom: 1.2rem;
+}
+
+.card-divider-gold {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-color) 30%, var(--gold-color) 70%, transparent);
+    width: 80%;
+    margin: 0 auto 1.5rem;
+}
+
+.card-intro-text {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    font-family: var(--font-calligraphy);
+    line-height: 1.8;
+}
+
+/* 2. Interactive Details Cards */
+.details-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.detail-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(201, 161, 74, 0.05);
+    transition: var(--transition-fast);
+}
+
+.detail-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(201, 161, 74, 0.15);
+}
+
+.detail-icon {
+    background-color: var(--bg-color);
+    border: 1px solid rgba(201, 161, 74, 0.2);
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detail-content {
+    flex-grow: 1;
+}
+
+.detail-content h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    text-transform: uppercase;
+}
+
+.detail-content p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.btn-text-icon {
+    display: inline-block;
+    color: var(--gold-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+    transition: var(--transition-fast);
+}
+
+.btn-text-icon:hover {
+    color: var(--gold-hover);
+    text-decoration: underline;
+}
+
+/* Gold Separator Line */
+.gold-separator-line {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-color), transparent);
+    margin: 2rem auto;
+}
+
+/* Invitation Quote message */
+.invitation-quote {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 90%;
+}
+
+.invitation-quote blockquote {
+    font-family: var(--font-calligraphy);
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--text-dark);
+}
+
+/* Action Buttons Footer Wrapper */
+.actions-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.actions-wrapper button, .actions-wrapper a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.95rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--gold-color);
+    border: 1px solid var(--gold-color);
+    box-shadow: var(--shadow-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: var(--white);
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* ==========================================================================
+   Scroll Reveal System (Page 2)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Marketing Footer
+   ========================================================================== */
+.marketing-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.developer-watermark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: var(--transition-fast);
+}
+
+.developer-watermark:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.dev-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid var(--gold-color);
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow-light);
+}
+
+.dev-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Modal Forms & Overlays
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(62, 59, 57, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 1rem;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background-color: var(--white);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 440px;
+    padding: 2.2rem 1.8rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(201, 161, 74, 0.15);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.open .modal-card {
+    transform: scale(1);
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+    line-height: 1;
+}
+
+.btn-close-modal:hover {
+    color: var(--text-dark);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+}
+
+.modal-header p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.4rem;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(62, 59, 57, 0.15);
+    background-color: var(--bg-color);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold-color);
+    box-shadow: 0 0 0 3px rgba(201, 161, 74, 0.15);
+}
+
+/* Radio Group styling */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 32px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-radio {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: var(--bg-color);
+    border: 2px solid rgba(201, 161, 74, 0.4);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+
+.radio-container:hover input ~ .custom-radio {
+    border-color: var(--gold-color);
+}
+
+.radio-container input:checked ~ .custom-radio {
+    background-color: var(--gold-color);
+    border-color: var(--gold-color);
+}
+
+.custom-radio::after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.radio-container input:checked ~ .custom-radio::after {
+    display: block;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.95rem;
+    font-size: 1.05rem;
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Admin RSVP Dashboard
+   ========================================================================== */
+.admin-card {
+    max-width: 900px;
+    width: 95%;
+}
+
+.admin-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.stat-badge {
+    background-color: var(--bg-color);
+    border: 1px solid rgba(62, 59, 57, 0.1);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.stat-badge strong {
+    color: var(--gold-color);
+    font-size: 1.05rem;
+}
+
+.stat-badge.attending {
+    border-color: rgba(136, 156, 122, 0.3);
+    background-color: rgba(136, 156, 122, 0.05);
+}
+.stat-badge.attending strong {
+    color: var(--green-color);
+}
+
+.stat-badge.absent {
+    border-color: rgba(217, 83, 79, 0.3);
+    background-color: rgba(217, 83, 79, 0.05);
+}
+.stat-badge.absent strong {
+    color: #d9534f;
+}
+
+.admin-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(62, 59, 57, 0.1);
+    border-radius: 8px;
+    max-height: 40vh;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.admin-table th, .admin-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(62, 59, 57, 0.1);
+}
+
+.admin-table th {
+    background-color: var(--bg-color);
+    font-weight: 600;
+    color: var(--text-dark);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(201, 161, 74, 0.05);
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-tag.attending {
+    background-color: rgba(136, 156, 122, 0.15);
+    color: var(--green-color);
+}
+
+.status-tag.absent {
+    background-color: rgba(217, 83, 79, 0.15);
+    color: #d9534f;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.admin-actions button {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Animations Keyframes
+   ========================================================================== */
+
+/* Page transition fade */
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Heart Drawing */
+@keyframes drawHeart {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Couple AI reveal and floating animations */
+@keyframes coupleReveal {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes coupleFloat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+/* Heartbeat pulse */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+
+/* Text Fade & Slide UP */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floral float decoration */
+@keyframes floralFloat {
+    from {
+        transform: translateY(0) rotate(0);
+    }
+    to {
+        transform: translateY(-6px) rotate(2deg);
+    }
+}
+
+/* Down arrow bounce */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Parallax backgrounds */
+@keyframes parallaxSlow {
+    from { background-position: 0 0; }
+    to { background-position: 500px 500px; }
+}
+
+@keyframes parallaxSlowReverse {
+    from { background-position: 0 0; }
+    to { background-position: -500px 500px; }
+}
+
+/* ==========================================================================
+   Media Queries & Responsiveness
+   ========================================================================== */
+
+/* Tablets & Desktop Viewports (Adjust styling for larger screens) */
+@media (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+    
+    .welcome-container, .invitation-container {
+        max-width: 580px;
+    }
+
+    .couple-illustration-container {
+        width: 320px;
+        height: 320px;
+        margin: 2rem auto;
+    }
+    
+    /* Unified couple illustration scaling handles itself */
+}
+
+/* Ultra Small Screens height adjustment */
+@media (max-height: 600px) {
+    .couple-illustration-container {
+        width: 180px;
+        height: 180px;
+        margin: 0.8rem auto;
+    }
+    /* Unified illustration scales automatically */
+    .welcome-names {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .couple-names {
+        font-size: 2rem;
+    }
+    .welcome-quote {
+        margin-bottom: 1rem;
+    }
+    .btn-primary {
+        padding: 0.75rem 2.2rem;
+    }
+}
+
+/* ==========================================================================
+   Floating Rose Petals & Botanical Leaves Animations
+   ========================================================================== */
+.petals-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.petal {
+    position: absolute;
+    background-color: var(--rose-color);
+    border-radius: 150% 0 150% 50% / 150% 0 150% 50%;
+    width: 15px;
+    height: 15px;
+    opacity: 0.75;
+    top: -25px;
+    animation: fallPetal 10s linear infinite;
+    transform-origin: center;
+}
+
+/* Individual petal configurations: sizes, speeds, start delay, and color varieties */
+.petal:nth-child(1) { left: 10%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 0s; background-color: #F3D8DC; }
+.petal:nth-child(2) { left: 25%; width: 12px; height: 12px; animation-duration: 13s; animation-delay: 1.5s; background-color: #E6C2C6; }
+.petal:nth-child(3) { left: 45%; width: 16px; height: 16px; animation-duration: 11s; animation-delay: 3s; background-color: #F3D8DC; }
+.petal:nth-child(4) { left: 60%; width: 14px; height: 14px; animation-duration: 10s; animation-delay: 0.5s; background-color: #C9A14A; opacity: 0.6; } /* Gold leaf flake! */
+.petal:nth-child(5) { left: 75%; width: 15px; height: 15px; animation-duration: 12s; animation-delay: 4.5s; background-color: #F3D8DC; }
+.petal:nth-child(6) { left: 90%; width: 13px; height: 13px; animation-duration: 14s; animation-delay: 2.2s; background-color: #E6C2C6; }
+.petal:nth-child(7) { left: 35%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 5.5s; background-color: #889C7A; opacity: 0.5; } /* Green botanical leaf! */
+.petal:nth-child(8) { left: 80%; width: 17px; height: 17px; animation-duration: 11s; animation-delay: 6s; background-color: #F3D8DC; }
+
+@keyframes fallPetal {
+    0% {
+        top: -25px;
+        transform: translateX(0) rotate(0deg) scale(0.9);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        top: 105%;
+        transform: translateX(70px) rotate(360deg) scale(1.1);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف: محمد ❤️ رؤى</title>
+    
+    <!-- Meta tags for SEO & Previews -->
+    <meta name="description" content="بكل الحب... ندعوكم لمشاركتنا أجمل يوم في حياتنا. زفاف محمد ❤️ رؤى.">
+    <meta property="og:title" content="دعوة زفاف: محمد ❤️ رؤى">
+    <meta property="og:description" content="ندعوكم لمشاركتنا فرحتنا في هذا اليوم المميز.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts: Tajawal (simple modern Arabic font) & Playfair Display (subtitles) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== PAGE 1: WELCOME SCREEN ==================== -->
+    <section id="welcome-screen" class="active-page">
+        <!-- Floating Rose Petals / Leaves Container -->
+        <div class="petals-container">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+        </div>
+
+        <!-- Botanical Background Elements (SVGs) -->
+        <div class="floral-corner top-left">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+                <path d="M0,0 C30,10 60,30 70,60 C75,70 65,80 50,70 C40,60 20,40 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M0,0 C10,30 30,60 60,70 C70,75 80,65 70,50 C60,40 40,20 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="70" cy="60" r="3" fill="#C9A14A" />
+                <circle cx="60" cy="70" r="3" fill="#C9A14A" />
+                <path d="M0,20 C15,35 30,45 40,65" fill="none" stroke="#889C7A" stroke-dasharray="3,3"/>
+            </svg>
+        </div>
+        <div class="floral-corner top-right">
+            <svg viewBox="0 0 100 100" width="120" height="120" style="transform: scaleX(-1);">
+                <path d="M0,0 C30,10 60,30 70,60 C75,70 65,80 50,70 C40,60 20,40 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M0,0 C10,30 30,60 60,70 C70,75 80,65 70,50 C60,40 40,20 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="70" cy="60" r="3" fill="#C9A14A" />
+                <circle cx="60" cy="70" r="3" fill="#C9A14A" />
+            </svg>
+        </div>
+
+        <div class="welcome-container">
+            <!-- Animated SVG Gold Heart -->
+            <div class="animated-heart-wrapper">
+                <svg viewBox="0 0 100 90" class="heart-svg" id="intro-heart">
+                    <!-- Path of a stylized elegant heart -->
+                    <path d="M 50,25 
+                             C 50,25 38,2 20,2 
+                             C 5,2 1,18 1,32 
+                             C 1,55 24,70 50,88 
+                             C 76,70 99,55 99,32 
+                             C 99,18 95,2 80,2 
+                             C 62,2 50,25 50,25 Z" 
+                          fill="none" stroke="#C9A14A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- Couple Animating/Hugging Container -->
+            <!-- The consolidated AI-generated couple illustration with backgrounds removed -->
+            <div class="couple-illustration-container">
+                <div class="couple-frame">
+                    <img src="couple_ai_nobg.png" alt="محمد ❤️ رؤى" class="couple-ai-img" onerror="this.src='couple_ai.jpg'">
+                </div>
+            </div>
+
+            <!-- Names & Welcome Texts -->
+            <div class="welcome-names">
+                <h1 class="couple-names">محمد <span class="heart-pulse">❤️</span> رؤى</h1>
+                <p class="wedding-subtitle">Wedding Invitation</p>
+            </div>
+
+            <div class="welcome-quote">
+                <p class="quote-text">بكل الحب...</p>
+                <p class="quote-subtext">ندعوكم لمشاركتنا أجمل يوم في حياتنا.</p>
+            </div>
+
+            <!-- Begin Invitation Button -->
+            <button id="btn-start" class="btn-primary shimmer-effect" aria-label="ابدأ الدعوة">
+                <span>ابدأ الدعوة ✨</span>
+            </button>
+
+            <!-- Down Scroll Hint -->
+            <div class="scroll-down-hint">
+                <span class="arrow-down">↓</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== PAGE 2: INVITATION SCREEN ==================== -->
+    <section id="invitation-screen" class="hidden-page">
+        <!-- Botanical Background Elements for Page 2 (SVGs) -->
+        <div class="floral-corner bottom-left" style="bottom: 5px; left: 5px; top: auto; transform: scaleY(-1);">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+                <path d="M0,0 C30,10 60,30 70,60 C75,70 65,80 50,70 C40,60 20,40 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M0,0 C10,30 30,60 60,70 C70,75 80,65 70,50 C60,40 40,20 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="70" cy="60" r="3" fill="#C9A14A" />
+                <circle cx="60" cy="70" r="3" fill="#C9A14A" />
+            </svg>
+        </div>
+        <div class="floral-corner bottom-right" style="bottom: 5px; right: 5px; top: auto; transform: scale(-1, -1);">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+                <path d="M0,0 C30,10 60,30 70,60 C75,70 65,80 50,70 C40,60 20,40 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M0,0 C10,30 30,60 60,70 C70,75 80,65 70,50 C60,40 40,20 0,0" fill="none" stroke="#889C7A" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="70" cy="60" r="3" fill="#C9A14A" />
+                <circle cx="60" cy="70" r="3" fill="#C9A14A" />
+            </svg>
+        </div>
+
+        <!-- Parallax Background Decorative Layers -->
+        <div class="bg-decor layer-1"></div>
+        <div class="bg-decor layer-2"></div>
+        
+        <div class="invitation-container">
+            <!-- 1. The Elegant Custom CSS Invitation Card (Equivalent to صورة الدعوة الأصلية) -->
+            <div class="invitation-card reveal">
+                <div class="card-inner-border">
+                    <div class="card-botanical-header">
+                        <svg viewBox="0 0 100 30" width="120" height="40">
+                            <path d="M10,15 Q30,5 50,15 T90,15" fill="none" stroke="#C9A14A" stroke-width="1.5"/>
+                            <path d="M50,5 L50,25" fill="none" stroke="#889C7A" stroke-width="1"/>
+                            <circle cx="50" cy="15" r="4" fill="#C9A14A"/>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="card-title">حفل زفاف</h2>
+                    <div class="card-names">محمد & رؤى</div>
+                    
+                    <div class="card-divider-gold"></div>
+                    
+                    <p class="card-intro-text">يسعدنا ويشرفنا دعوتكم لحضور حفل زفافنا ومشاركتنا فرحة العمر.</p>
+                </div>
+            </div>
+
+            <!-- 2. Interactive Details Cards (Revealed on Scroll) -->
+            <div class="details-section">
+                <!-- Date Card -->
+                <div class="detail-card reveal">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C9A14A" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="detail-content">
+                        <h3>التاريخ</h3>
+                        <p class="date-text">25 أغسطس 2026</p>
+                    </div>
+                </div>
+
+                <!-- Time Card -->
+                <div class="detail-card reveal">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C9A14A" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="detail-content">
+                        <h3>الوقت</h3>
+                        <p class="time-text">09:00 مساءً</p>
+                    </div>
+                </div>
+
+                <!-- Venue Card -->
+                <div class="detail-card reveal">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C9A14A" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="detail-content">
+                        <h3>المكان</h3>
+                        <p class="venue-text">قاعة جراند بايليون</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=قاعة+جراند+بايليون" target="_blank" class="btn-text-icon" id="btn-show-map-inline">
+                            <span>📍 عرض الموقع على الخريطة</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golden Line -->
+            <div class="gold-separator-line reveal"></div>
+
+            <!-- Middle Quote Message -->
+            <div class="invitation-quote reveal">
+                <blockquote>
+                    "وجودكم هو أجمل هدية لنا،<br>
+                    ونتمنى أن تشاركونا فرحتنا في هذا اليوم المميز.<br>
+                    حضوركم سيجعل لحظاتنا أكثر جمالًا." ❤️
+                </blockquote>
+            </div>
+
+            <!-- Action Buttons Footer -->
+            <div class="actions-wrapper reveal">
+                <a href="https://www.google.com/maps/search/?api=1&query=قاعة+جراند+بايليون" target="_blank" class="btn-secondary" id="btn-location-footer">
+                    <span>📍 الموقع الجغرافي</span>
+                </a>
+                
+                <button id="btn-rsvp-trigger" class="btn-primary shimmer-effect">
+                    <span>💬 تأكيد الحضور</span>
+                </button>
+            </div>
+
+            <!-- Secret Marketing Watermark Footer -->
+            <footer class="marketing-footer reveal">
+                <div class="developer-watermark" id="dev-logo-trigger" title="Designed with love">
+                    <img src="logo.jpg" alt="Developer Logo" class="dev-logo">
+                    <p class="dev-text">تم التصميم والتطوير الإبداعي</p>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ==================== MODAL: RSVP FORM ==================== -->
+    <div id="rsvp-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="btn-close-modal" id="btn-close-rsvp" aria-label="إغلاق">&times;</button>
+            
+            <div class="modal-header">
+                <h3>تأكيد الحضور الكريم ✍️</h3>
+                <p>يسعدنا معرفة مدى إمكانية حضوركم الكريم لمشاركتنا فرحتنا</p>
+            </div>
+            
+            <form id="form-rsvp">
+                <div class="form-group">
+                    <label for="rsvp-name">الاسم الكريم بالكامل *</label>
+                    <input type="text" id="rsvp-name" required placeholder="يرجى كتابة الاسم هنا...">
+                </div>
+                
+                <div class="form-group">
+                    <label>تأكيد حضورك *</label>
+                    <div class="radio-group">
+                        <label class="radio-container">
+                            <input type="radio" name="rsvp-status" value="attending" checked>
+                            <span class="custom-radio"></span>
+                            يسعدني الحضور بكل سرور
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="rsvp-status" value="absent">
+                            <span class="custom-radio"></span>
+                            أعتذر لظروف خارجة عن إرادتي
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="group-guests">
+                    <label for="rsvp-guests">عدد المرافقين (إن وُجد)</label>
+                    <select id="rsvp-guests">
+                        <option value="0">بدون مرافقين (شخص واحد)</option>
+                        <option value="1">شخص إضافي واحد</option>
+                        <option value="2">شخصين إضافيين</option>
+                        <option value="3">ثلاثة أشخاص</option>
+                        <option value="4">أربعة أشخاص</option>
+                        <option value="5">خمسة أشخاص</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rsvp-message">رسالة أو تهنئة للعروسين</label>
+                    <textarea id="rsvp-message" rows="3" placeholder="اكتب تهنئتك الجميلة هنا..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-submit shimmer-effect">
+                    <span>إرسال تأكيد الحضور ✨</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ==================== MODAL: ADMIN RSVP DASHBOARD ==================== -->
+    <div id="admin-modal" class="modal-overlay">
+        <div class="modal-card admin-card">
+            <button class="btn-close-modal" id="btn-close-admin" aria-label="إغلاق">&times;</button>
+            
+            <div class="modal-header">
+                <h3>لوحة التحكم: تأكيدات الحضور 📊</h3>
+                <div class="admin-stats">
+                    <div class="stat-badge">المجموع الكلي: <strong id="stat-total">0</strong></div>
+                    <div class="stat-badge attending">مؤكد: <strong id="stat-attending">0</strong></div>
+                    <div class="stat-badge absent">معتذر: <strong id="stat-absent">0</strong></div>
+                    <div class="stat-badge guests">المرافقين: <strong id="stat-guests">0</strong></div>
+                </div>
+            </div>
+            
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>الحالة</th>
+                            <th>المرافقين</th>
+                            <th>الرسالة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        <!-- Filled dynamically with JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="admin-actions">
+                <button id="btn-download-csv" class="btn-secondary">📥 تحميل البيانات كـ Excel (CSV)</button>
+                <button id="btn-clear-db" class="btn-danger">🗑️ مسح كل البيانات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script src="index.js"></script>
+</body>
+</html>
